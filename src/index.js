@@ -4,11 +4,11 @@
 //import {DB_NAME} from "./constants";
 import dotenv from "dotenv"
 import connectDB from "./db/index.js";
+import {app} from './app.js'
 
 // test other way
-/*import dns from 'dns';
-dns.setServers(["1.1.1.1", "8.8.8.8"]);*/
-
+import dns from 'dns';
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 //
 
 dotenv.config({
@@ -17,9 +17,9 @@ dotenv.config({
 
 
 connectDB()
-.them(() => {
+.then(() => {
     app.listen(process.env.PORT  || 8000, ()  => {
-        console.log(`Server is running at port: &{process.env.PORT}`);
+        console.log(`Server is running at port: ${process.env.PORT}`);
     })
 })
 .catch((err) => {
